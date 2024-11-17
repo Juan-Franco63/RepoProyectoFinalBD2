@@ -1,0 +1,45 @@
+{
+    "_comment": "CONSULTAS tutor"
+},
+// Create (Insert)
+db.Tutores.insertOne({
+  "_id": "T_001",
+  "name": "Alfonso Marilopez",
+  "email": "AlfonoMar@gmail.com",
+  "cursos": [
+    "C_001",
+    "C_003"
+  ]
+})
+
+db.Tutores.insertMany([
+    {
+      "_id": "T_001",
+      "name": "Alfonso Marilopez",
+      "email": "AlfonsoMar@gmail.com",
+      "cursos": ["C_001", "C_003"]
+    },
+    {
+      "_id": "T_002",
+      "name": "Mario Sanchez",
+      "email": "MarioSanchez@gmail.com",
+      "cursos": ["C_002"]
+    },
+    // 8 documentos más
+  ])
+  
+  // Read (Find)
+  db.Tutores.find({ "_id": "T_001" }) // Encuentra al tutor con ID T_001
+  
+  // Read All (FindAll)
+  db.Tutores.find({}) // Encuentra todos los tutores
+  
+  // Update
+  db.Tutores.updateOne(
+    { "_id": "T_001" },
+    { $set: { "email": "AlfonsoNewEmail@gmail.com" } }
+  ) // Actualiza el correo de Alfonso
+  
+  // Delete
+  db.Tutores.deleteOne({ "_id": "T_002" }) // Borra al tutor con ID T_002
+  

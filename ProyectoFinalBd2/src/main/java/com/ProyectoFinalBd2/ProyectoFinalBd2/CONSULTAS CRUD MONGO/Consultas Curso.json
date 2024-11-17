@@ -1,0 +1,79 @@
+{
+    "_comment": "CONSULTAS CURSO"
+},
+// Create (Insert)
+db.Cursos.insertOne({
+  _id: 'C_001',
+  category: 'Music',
+  cost: 100000,
+  name: 'Guitar for Noobies',
+  tutor_id: 'T_001',
+  ratings: [
+    {
+      usuario_id: 'U_001',
+      rating: 4
+    }
+  ]
+})
+
+db.Cursos.insertMany([
+  {
+    _id: 'C_002',
+    category: 'Programming',
+    cost: 150000,
+    name: 'Programming for Beginners',
+    tutor_id: 'T_002',
+    ratings: [
+      {
+        usuario_id: 'U_002',
+        rating: 9.8
+      }
+    ]
+  },
+  {
+    _id: 'C_003',
+    category: 'Music',
+    cost: 180000,
+    name: 'Guitar for Pros',
+    tutor_id: 'T_001',
+    ratings: [
+      {
+        usuario_id: 'U_001',
+        rating: 5
+      }
+    ]
+  },
+  {
+    _id: 'C_005',
+    category: 'Programming',
+    cost: 150000,
+    name: 'Introduction to Python',
+    tutor_id: 'T_003',
+    ratings: []
+  },
+  {
+    _id: 'C_007',
+    category: 'Art',
+    cost: 70000,
+    name: 'Digital Art Fundamentals',
+    tutor_id: 'T_005',
+    ratings: []
+  }
+])
+
+  
+  // Read (Find)
+  db.Cursos.findOne({_id: 'C_001'}) // Encuentra el curso con ID C_001
+  
+  // Read All (FindAll)
+  db.Cursos.find({}) // Encuentra todos los cursos
+  
+  // Update
+  db.Cursos.updateOne(
+    { "_id": "C_001" },
+    { $set: { "cost": 120000 } }
+  ) // Actualiza el costo del curso de guitarra
+  
+  // Delete
+  db.Cursos.deleteOne({ "_id": "C_002" }) // Borra el curso con ID C_002
+  

@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ProyectoFinalBd2Application<ProyectoFinalBd2>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.ProyectoFinalBd2.ProyectoFinalBd2.ProyectoFinalBd2Application",
+            "projectName": "ProyectoFinalBd2",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

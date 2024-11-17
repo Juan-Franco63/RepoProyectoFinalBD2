@@ -1,0 +1,88 @@
+{
+  "_comment": "CONSULTAS tutor"
+},
+// Create (Insert)
+
+db.curso_desnormalizado.insertOne({
+  "_id": "C_001",
+  "category": "Music",
+  "cost": 100000,
+  "name": "Guitar for Noobies",
+  "tutor": {
+    "_id": "T_001",
+    "name": "Alfonso Marilopez",
+    "email": "AlfonoMar@gmail.com"
+  },
+  "ratings": [
+    {
+      "usuario_id": "U_001",
+      "rating": 4
+    },
+    {
+      "usuario_id": "U_002",
+      "name": "Juan Franco",
+      "email": "JPablofranco@gmail.com",
+      "rating": 4
+    }
+  ],
+  "usuarios_matriculados": [
+    {
+      "_id": "U_002",
+      "name": "Juan Franco",
+      "email": "JPablofranco@gmail.com"
+    }
+  ]
+})
+
+//Insert Many
+db.curso_desnormalizado.insertMany([
+  {
+    "_id": "C_001",
+    "category": "Music",
+    "cost": 100000,
+    "name": "Guitar for Noobies",
+    "tutor": {
+      "_id": "T_001",
+      "name": "Alfonso Marilopez",
+      "email": "AlfonsoMar@gmail.com"
+    },
+    "ratings": [
+      { "usuario_id": "U_001", "name": "Juan Franco", "email": "JPablofranco@gmail.com", "rating": 4 }
+    ],
+    "usuarios_matriculados": [
+      { "_id": "U_001", "name": "Juan Franco", "email": "JPablofranco@gmail.com" }
+    ]
+  },
+  {
+    "_id": "C_002",
+    "category": "Programming",
+    "cost": 150000,
+    "name": "JavaScript Basics",
+    "tutor": {
+      "_id": "T_002",
+      "name": "Mario Sanchez",
+      "email": "MarioSanchez@gmail.com"
+    },
+    "ratings": [
+      { "usuario_id": "U_002", "name": "Ana Pérez", "email": "AnaPerez@gmail.com", "rating": 3 }
+    ],
+    "usuarios_matriculados": [
+      { "_id": "U_002", "name": "Ana Pérez", "email": "AnaPerez@gmail.com" }
+    ]
+  },
+])
+
+// Read (Find)
+db.curso_desnormalizado.find({ "_id": "C_001" }) // Encuentra el curso desnormalizado con ID C_001
+
+// Read All (FindAll)
+db.curso_desnormalizado.find({}) // Encuentra todos los cursos desnormalizados
+
+// Update
+db.curso_desnormalizado.updateOne(
+  { "_id": "C_001" },
+  { $set: { "cost": 120000 } }
+) // Actualiza el costo del curso desnormalizado de guitarra
+
+// Delete
+db.curso_desnormalizado.deleteOne({ "_id": "C_002" }) // Borra el curso desnormalizado con ID C_002

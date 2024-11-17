@@ -1,0 +1,92 @@
+{
+  "_comment": "CONSULTAS USUARIO"
+},
+// Crear un Usuario (Insert)
+db.Usuario.insertOne({
+  "_id": "U_002",
+  "name": "Juan Franco",
+  "email": "JPablofranco@gmail.com",
+  "cursos matriculados": [
+    "C_001",
+    "C_003"
+  ],
+  "rating_cursos": [
+    {
+      "curso_id": "C_001",
+      "rating": 4
+    },
+    {
+      "curso_id": "C_003",
+      "rating": 5
+    }
+  ],
+  "rating_tutores": [
+    {
+      "tutor_id": "T001",
+      "calificacion": 5
+    }
+  ]
+})
+
+db.Usuarios.insertMany([
+  {
+    "_id": "U_002",
+    "name": "Juan Franco",
+    "email": "JPablofranco@gmail.com",
+    "cursos matriculados": [
+      "C_001",
+      "C_003"
+    ],
+    "rating_cursos": [
+      {
+        "curso_id": "C_001",
+        "rating": 4
+      },
+      {
+        "curso_id": "C_003",
+        "rating": 5
+      }
+    ],
+    "rating_tutores": [
+      {
+        "tutor_id": "T001",
+        "calificacion": 5
+      }
+    ]
+  },
+  {
+    "_id": "U_001",
+    "name": "Mariluz Josefina",
+    "email": "JuanFrancoNewEmail@gmail.com",
+    "cursos matriculados": [
+      "C_002"
+    ],
+    "rating_cursos": [
+      {
+        "curso_id": "C_002",
+        "rating": 9
+      }
+    ],
+    "rating_tutores": [
+      {
+        "tutor_id": "T_002",
+        "calificacion": 9.8
+      }
+    ]
+  }
+])
+
+// Read (Find)
+db.Usuarios.find({ "_id": "U_001" }) // Encuentra al usuario con ID U_001
+
+// Read All (FindAll)
+db.Usuarios.find({}) // Encuentra todos los usuarios
+
+// Update
+db.Usuarios.updateOne(
+  { "_id": "U_002" }, 
+  { $set: { "email": "JuanFrancoNewEmail@gmail.com" } }
+) // Actualiza el correo de Juan Franco
+
+// Delete
+db.Usuarios.deleteOne({ "_id": "U_001" }) // Borra al usuario con ID U_002
