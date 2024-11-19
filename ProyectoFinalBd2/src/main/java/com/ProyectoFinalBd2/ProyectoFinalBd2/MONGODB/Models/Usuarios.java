@@ -1,21 +1,15 @@
-package com.ProyectoFinalBd2.ProyectoFinalBd2.Models;
+package com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models;
 
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Relationship;
-import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Document(collection = "Usuarios")
-@Node("Usuarios")
 public class Usuarios {
     @Id
-    @GeneratedValue(UUIDStringGenerator.class)
     private String id;
     private String name;
     private String email;
@@ -23,11 +17,9 @@ public class Usuarios {
     @JsonProperty("cursos matriculados")
     private List<String> cursosMatriculados; // Si no es relación, está bien así.
 
-    @Relationship(type = "HAS_RATING_COURSE", direction = Relationship.Direction.OUTGOING)
     @JsonProperty("rating_cursos")
     private List<CursoRating> ratingCursos;
 
-    @Relationship(type = "HAS_RATING_TUTOR", direction = Relationship.Direction.OUTGOING)
     @JsonProperty("rating_tutores")
     private List<TutorRating> ratingTutores;
 

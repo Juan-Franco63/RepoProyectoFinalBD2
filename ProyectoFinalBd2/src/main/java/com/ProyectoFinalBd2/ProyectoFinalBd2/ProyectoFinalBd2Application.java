@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 
 @SpringBootApplication
-@EnableNeo4jRepositories(basePackages = "com.ProyectoFinalBd2.ProyectoFinalBd2.Repositories")
-@EnableMongoRepositories(basePackages = "com.ProyectoFinalBd2.ProyectoFinalBd2.Repositories")
+@EnableNeo4jRepositories(basePackages = "com.ProyectoFinalBd2.ProyectoFinalBd2.NEO4J.RepositoriesNeo")
+@EnableMongoRepositories(basePackages = "com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Repositories")
 
 public class ProyectoFinalBd2Application {
 

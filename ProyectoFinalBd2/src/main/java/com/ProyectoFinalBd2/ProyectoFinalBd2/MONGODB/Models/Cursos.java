@@ -1,127 +1,99 @@
-package com.ProyectoFinalBd2.ProyectoFinalBd2.Models;
+package com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
-import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Document(collection = "Cursos")
-@Node("Cursos")
 public class Cursos {
-
-    @Id @GeneratedValue(UUIDStringGenerator.class)
+    @Id
     private String id;
+
     private String category;
-    private int cost;
+    private double cost;
     private String name;
 
-    @DBRef
-    private Tutores tutor;  // Referencia al modelo Tutor
+    @JsonProperty("tutor_id")
+    private String tutorId;
 
-    private List<RatingCurso> ratings;
+    @JsonProperty("ratings")
+    private List<UsuarioRating> ratings;
 
-    
+    public Cursos() {
+        this.ratings = new ArrayList<>();
+    }
 
-    
-
-    public Cursos(String id, String category, int cost, String name, Tutores tutor,
-            List<RatingCurso> ratings) {
+    public Cursos(String id, String category, double cost, String name, String tutorId, List<UsuarioRating> ratings) {
         this.id = id;
         this.category = category;
         this.cost = cost;
         this.name = name;
-        this.tutor = tutor;
+        this.tutorId = tutorId;
         this.ratings = ratings;
     }
 
-
-
+    // Getters y Setters
     public String getId() {
         return id;
     }
-
-
 
     public void setId(String id) {
         this.id = id;
     }
 
-
-
     public String getCategory() {
         return category;
     }
-
-
 
     public void setCategory(String category) {
         this.category = category;
     }
 
-
-
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
-
-
-    public void setCost(int cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
-
-
 
     public String getName() {
         return name;
     }
 
-
-
     public void setName(String name) {
         this.name = name;
     }
 
-
-
-    public Tutores getTutor() {
-        return tutor;
+    public String getTutorId() {
+        return tutorId;
     }
 
-
-
-    public void setTutor(Tutores tutor) {
-        this.tutor = tutor;
+    public void setTutorId(String tutorId) {
+        this.tutorId = tutorId;
     }
 
-
-
-    public List<RatingCurso> getRatings() {
+    public List<UsuarioRating> getRatings() {
         return ratings;
     }
 
-
-
-    public void setRatings(List<RatingCurso> ratings) {
+    public void setRatings(List<UsuarioRating> ratings) {
         this.ratings = ratings;
     }
 
-
-
-    // Clase interna para rating de usuarios en el curso
-    @Node("RatingCurso")
-    public static class RatingCurso {
-        @Id @GeneratedValue(UUIDStringGenerator.class)
+    // Clase interna para los ratings
+    public static class UsuarioRating {
+        @JsonProperty("usuario_id")
         private String usuarioId;
         private int rating;
 
-        public RatingCurso() {}
+        public UsuarioRating() {}
 
-        public RatingCurso(String usuarioId, int rating) {
+        public UsuarioRating(String usuarioId, int rating) {
             this.usuarioId = usuarioId;
             this.rating = rating;
         }
@@ -142,8 +114,4 @@ public class Cursos {
             this.rating = rating;
         }
     }
-
-
-
-    // Getters y setters para Curso (se omiten aquí para brevedad)
 }
