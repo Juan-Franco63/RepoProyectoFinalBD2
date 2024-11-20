@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models.Cursos;
 import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models.Usuarios;
 import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Services.UsuarioServiceMongo;
 
@@ -42,8 +43,9 @@ public class UsuarioControllerMongo {
         }
         return ResponseEntity.ok(usuarios);
     }
+
     // Obtener un usuario por su ID
-    @GetMapping("/findyById/{id}")
+    @GetMapping("/findById/{id}")
     public ResponseEntity<Usuarios> getUsuarioById(@PathVariable String id) {
         Usuarios usuario = usuarioService.getUsuarioById(id);
         if (usuario != null) {
@@ -59,12 +61,13 @@ public class UsuarioControllerMongo {
         usuarioService.deleteUsuarioByName(name);
         return ResponseEntity.noContent().build();
     }
-        // Eliminar un usuario por su ID
-        @DeleteMapping("/delete/{id}")
-        public ResponseEntity<Void> deleteUsuario(@PathVariable String id) {
-            usuarioService.deleteUsuario(id);
-            return ResponseEntity.noContent().build();
-        }
+
+    // Eliminar un usuario por su ID
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteUsuario(@PathVariable String id) {
+        usuarioService.deleteUsuario(id);
+        return ResponseEntity.noContent().build();
+    }
 
     // Actualizar un usuario por su ID
     @PutMapping("/update/{id}")
@@ -76,8 +79,13 @@ public class UsuarioControllerMongo {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // **Nueva funcionalidad: Recomendación de cursos más populares**
+    @GetMapping("/recomendadosPopulares")
+    public ResponseEntity<List<Cursos>> recomendarCursosPopulares() {
+        List<Cursos> cursosPopulares = usuarioService.recomendarCursosPopulares();
+        return cursosPopulares != null && !cursosPopulares.isEmpty()
+                ? ResponseEntity.ok(cursosPopulares)
+                : ResponseEntity.noContent().build();
+    }
 }
-
-
-
-
