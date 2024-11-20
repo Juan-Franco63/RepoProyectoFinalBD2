@@ -1,0 +1,1164 @@
+{
+	"info": {
+		"_postman_id": "c3c55816-bb3e-40b1-b1aa-b3f9305860b0",
+		"name": "Consultas BD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38816315"
+	},
+	"item": [
+		{
+			"name": "Consultas Usuario",
+			"item": [
+				{
+					"name": "Mongo",
+					"item": [
+						{
+							"name": "All Usuarios Mongo",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"_id\": \"U_040\",\r\n  \"name\": \"cabezon\",\r\n  \"email\": \"maria.lopez@gmail.com\",\r\n  \"cursos matriculados\": [\r\n    \"C_002\",\r\n    \"C_004\"\r\n  ],\r\n  \"rating_cursos\": [\r\n    {\r\n      \"curso_id\": \"C_002\",\r\n      \"rating\": 5\r\n    },\r\n    {\r\n      \"curso_id\": \"C_004\",\r\n      \"rating\": 4\r\n    }\r\n  ],\r\n  \"rating_tutores\": [\r\n    {\r\n      \"tutor_id\": \"T002\",\r\n      \"calificacion\": 4\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/usuariosMongo/allUserMongo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"usuariosMongo",
+										"allUserMongo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Guardar User Mongo",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"U_830\",\r\n    \"name\": \"Luis\",\r\n    \"email\": \"luis@gmail.com\",\r\n    \"cursos matriculados\": [\"C_103\"],\r\n    \"rating_cursos\": [\r\n        {\r\n            \"curso_id\": \"C_103\",\r\n            \"rating\": 1\r\n        }\r\n    ],\r\n    \"rating_tutores\": [\r\n        {\r\n            \"tutor_id\": \"T_203\",\r\n            \"calificacion\": 2\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/usuariosMongo/saveUserMongo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"usuariosMongo",
+										"saveUserMongo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Usuario By name",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/usuariosMongo/findByName/Luis",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"usuariosMongo",
+										"findByName",
+										"Luis"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Usuario By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/usuariosMongo/findById/U_745",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"usuariosMongo",
+										"findById",
+										"U_745"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User Mongo By Name",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"cabezon\",\r\n  \"email\": \"cabezon@gaming\",\r\n  \"cursos matriculados\": [\r\n    \"C_001\",\r\n    \"C_008\"\r\n  ],\r\n  \"rating_cursos\": [\r\n    {\r\n      \"curso_id\": \"C_001\",\r\n      \"rating\": 5\r\n    },\r\n    {\r\n      \"curso_id\": \"C_008\",\r\n      \"rating\": 4\r\n    }\r\n  ],\r\n  \"rating_tutores\": [\r\n    {\r\n      \"tutor_id\": \"T001\",\r\n      \"calificacion\": 4\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/usuariosMongo/deleteByName/cabezon",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"usuariosMongo",
+										"deleteByName",
+										"cabezon"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User Mongo By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"cabezon\",\r\n  \"email\": \"cabezon@gaming\",\r\n  \"cursos matriculados\": [\r\n    \"C_001\",\r\n    \"C_008\"\r\n  ],\r\n  \"rating_cursos\": [\r\n    {\r\n      \"curso_id\": \"C_001\",\r\n      \"rating\": 5\r\n    },\r\n    {\r\n      \"curso_id\": \"C_008\",\r\n      \"rating\": 4\r\n    }\r\n  ],\r\n  \"rating_tutores\": [\r\n    {\r\n      \"tutor_id\": \"T001\",\r\n      \"calificacion\": 4\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/usuariosMongo/delete/673bb21bb56ddb010eb95c63",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"usuariosMongo",
+										"delete",
+										"673bb21bb56ddb010eb95c63"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar User Mongo By Id",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"cabezon\",\r\n  \"email\": \"cabezon@gaming\",\r\n  \"cursos matriculados\": [\r\n    \"C_001\",\r\n    \"C_008\"\r\n  ],\r\n  \"rating_cursos\": [\r\n    {\r\n      \"curso_id\": \"C_001\",\r\n      \"rating\": 5\r\n    },\r\n    {\r\n      \"curso_id\": \"C_008\",\r\n      \"rating\": 4\r\n    }\r\n  ],\r\n  \"rating_tutores\": [\r\n    {\r\n      \"tutor_id\": \"T001\",\r\n      \"calificacion\": 4\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/usuariosMongo/update/673bb21bb56ddb010eb95c63",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"usuariosMongo",
+										"update",
+										"673bb21bb56ddb010eb95c63"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Neo4J",
+					"item": [
+						{
+							"name": "Guardar Usuario",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"1\",\r\n  \"nombre\": \"Juan Pérez\"\r\n}\r\n\r\n\r\n\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/usuarios",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"usuarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Usuario By Id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/usuarios/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"usuarios",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Consultas Tutor",
+			"item": [
+				{
+					"name": "Mongo",
+					"item": [
+						{
+							"name": "All Tutores Mongo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/tutoresMongo/allTutorMongo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"tutoresMongo",
+										"allTutorMongo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Guardar Tutor Mongo",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"_id\": \"T_002\",\r\n  \"name\": \"Cabezon\",\r\n  \"email\": \"maria.lopez@example.com\",\r\n  \"cursos\": [\r\n    \"C_002\",\r\n    \"C_004\"\r\n  ],\r\n  \"ratings\": [\r\n    {\r\n      \"usuario_id\": \"U_003\",\r\n      \"rating\": 4\r\n    },\r\n    {\r\n      \"usuario_id\": \"U_005\",\r\n      \"rating\": 5\r\n    }\r\n  ]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/tutoresMongo/saveTutorMongo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"tutoresMongo",
+										"saveTutorMongo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Tutor By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/tutoresMongo/getTutor/T_008",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"tutoresMongo",
+										"getTutor",
+										"T_008"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Tutor By name",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/tutoresMongo/findByName/Cabezon",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"tutoresMongo",
+										"findByName",
+										"Cabezon"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar Tutor Mongo By Id",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Cabezon\",\r\n  \"email\": \"cabezon@learning\",\r\n  \"cursos\": [\r\n    \"C_002\",\r\n    \"C_004\"\r\n  ],\r\n  \"ratings\": [\r\n    {\r\n      \"usuario_id\": \"U_003\",\r\n      \"rating\": 4\r\n    },\r\n    {\r\n      \"usuario_id\": \"U_005\",\r\n      \"rating\": 5\r\n    }\r\n  ]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/tutoresMongo/update/673c042e3992513e0b155dd4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"tutoresMongo",
+										"update",
+										"673c042e3992513e0b155dd4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Tutor By name",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/tutoresMongo/deleteByName/Cabezon",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"tutoresMongo",
+										"deleteByName",
+										"Cabezon"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Tutor By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/tutoresMongo/delete/673c03e93992513e0b155dd3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"tutoresMongo",
+										"delete",
+										"673c03e93992513e0b155dd3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Neo4J",
+					"item": [
+						{
+							"name": "Guardar Tutor",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/tutores",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"tutores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Tutor By Id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/tutores/201",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"tutores",
+										"201"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Consultas Curso",
+			"item": [
+				{
+					"name": "Mongo",
+					"item": [
+						{
+							"name": "All Cursos Mongo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/cursosMongo/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cursosMongo",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Guardar Curso Mongo",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"_id\": \"C_111\",\r\n    \"category\": \"Science\",\r\n    \"cost\": 60000,\r\n    \"name\": \"Basic Physics\",\r\n    \"tutor_id\": \"T_203\",\r\n    \"ratings\": [\r\n        { \"usuario_id\": \"U_003\", \"rating\": 1 }\r\n    ]\r\n}\r\n\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/cursosMongo/saveCursoMongo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cursosMongo",
+										"saveCursoMongo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Curso By Category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/cursosMongo/findBycategoria/Music",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cursosMongo",
+										"findBycategoria",
+										"Music"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Curso By Tutor Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/cursosMongo/findByTutorId/T_001",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cursosMongo",
+										"findByTutorId",
+										"T_001"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Curso By Id ",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/cursosMongo/findById/C_011",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cursosMongo",
+										"findById",
+										"C_011"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar Curso By Id",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"C_011\",\r\n    \"category\": \"Fitness\",\r\n    \"cost\": 70000.0,\r\n    \"name\": \"Yoga for Everyone\",\r\n    \"tutor_id\": \"T_002\",\r\n    \"ratings\": [\r\n        {\r\n      \"usuario_id\": \"U_002\",\r\n      \"rating\": 9.8\r\n    }]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/cursosMongo/updateById/C_011",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cursosMongo",
+										"updateById",
+										"C_011"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Curso By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"C_011\",\r\n    \"category\": \"Fitness\",\r\n    \"cost\": 70000.0,\r\n    \"name\": \"Yoga for Everyone\",\r\n    \"tutor_id\": \"T_002\",\r\n    \"ratings\": [\r\n        {\r\n      \"usuario_id\": \"U_002\",\r\n      \"rating\": 9.8\r\n    }]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/cursosMongo/deleteById/673d6ad8c845ab1aa1168c6e",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cursosMongo",
+										"deleteById",
+										"673d6ad8c845ab1aa1168c6e"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Neo4J",
+					"item": [
+						{
+							"name": "Guardar Curso",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"101\",\r\n  \"nombre\": \"Curso de Java\",\r\n  \"categoria\": \"Programación\",\r\n  \"calificacion\": 4.5\r\n}\r\n\r\n\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/cursos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cursos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Curso By Id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/cursos/101",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cursos",
+										"101"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Cursos",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/cursos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"cursos"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Relacionar Tutor Con Curso (Consulta Neo4J)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/tutores/201/curso/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"tutores",
+						"201",
+						"curso",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Inscribir Usuario en Curso (Consulta Neo4J)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios/1/inscribir/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"1",
+						"inscribir",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calificar Curso de Usuario (Consulta Neo4J)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios/1/calificar/101?puntuacion=4.8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"1",
+						"calificar",
+						"101"
+					],
+					"query": [
+						{
+							"key": "puntuacion",
+							"value": "4.8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calificar Tutor de Usuario (Consulta Neo4J)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios/1/calificar-tutor/201?puntuacion=4.9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"1",
+						"calificar-tutor",
+						"201"
+					],
+					"query": [
+						{
+							"key": "puntuacion",
+							"value": "4.9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar Cursos de Categoria Similar (Consulta Neo4J)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cursos/recomendados-similares?nombre=Curso de Java",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cursos",
+						"recomendados-similares"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Curso de Java"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar Cursos Mas Populares (Consulta Neo4J)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cursos/recomendados-populares",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cursos",
+						"recomendados-populares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar Cursos de Calificacion Baja y pocos Participantes (Consulta Neo4J)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cursos/recomendados-pocos-asistentes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cursos",
+						"recomendados-pocos-asistentes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar Cursos de Categoria Similar (Consulta MongoDB)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/cursosMongo/recomendadosSimilares/Programming%20for%20Beginners",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"cursosMongo",
+						"recomendadosSimilares",
+						"Programming%20for%20Beginners"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar Cursos mas Populares (Consulta MongoDB)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"201\",\r\n  \"nombre\": \"María López\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuariosMongo/recomendadosPopulares",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuariosMongo",
+						"recomendadosPopulares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar Curso de Calificacion Baja y Pocos Participantes(Consulta MongoDB)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/usuariosMongo/recomendadosPocosAsistentesYBajaCalificacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuariosMongo",
+						"recomendadosPocosAsistentesYBajaCalificacion"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
