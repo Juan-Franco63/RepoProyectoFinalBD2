@@ -1,5 +1,7 @@
 package com.ProyectoFinalBd2.ProyectoFinalBd2.NEO4J.ServicesNeo;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.ProyectoFinalBd2.ProyectoFinalBd2.NEO4J.ModelsNeo.Curso;
@@ -27,4 +29,21 @@ public class CursoService {
     public Iterable<Curso> obtenerTodosLosCursos() {
         return cursoRepository.findAll();
     }
+
+    public List<Curso> recomendarCursosSimilares(String nombre) {
+    return cursoRepository.recomendarCursosSimilares(nombre);
+    }
+
+    public List<Curso> recomendarCursosMasPopulares() {
+        return cursoRepository.recomendarCursosMasPopulares();
+    }
+
+    public List<Curso> recomendarCursosConPocosAsistentesYBajaCalificacion() {
+        return cursoRepository.recomendarCursosConPocosAsistentesYBajaCalificacion();
+    }
+    
+    
+    
+
+
 }
