@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models.CursoConPocosAsistentesYBajaCalificacion;
 import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models.CursoPopular;
 import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models.Cursos;
 import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models.Usuarios;
@@ -63,17 +64,20 @@ public class UsuarioServiceMongo {
         }).orElse(null);
     }
 
-    // Nueva funcionalidad: Recomendación de cursos más populares
+    // Recomendación de cursos más populares
     public List<Cursos> recomendarCursosPopulares() {
-        // Obtiene los cursos más populares desde el repositorio de usuarios
         List<CursoPopular> cursosPopulares = usuarioRepository.findCursosConMasAsistentes();
 
-        // Extrae los IDs de los cursos más populares
         List<String> cursosIds = cursosPopulares.stream()
-                .map(CursoPopular::getId) // Obtiene el ID de cada curso
+                .map(CursoPopular::getId)
                 .collect(Collectors.toList());
 
-        // Busca los cursos por sus IDs en el repositorio de cursos y devuelve la lista
         return cursoRepository.findAllById(cursosIds);
+    }
+
+    // **Nueva funcionalidad: Recomendación de cursos con pocos asistentes y baja calificación**
+    public List<CursoConPocosAsistentesYBajaCalificacion> recomendarCursosConPocosAsistentesYBajaCalificacion() {
+        // Llama al repositorio para obtener la lista de cursos con pocos asistentes y baja calificación
+        return usuarioRepository.findCursosConPocosAsistentesYBajaCalificacion();
     }
 }

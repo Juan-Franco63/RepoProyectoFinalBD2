@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models.CursoConPocosAsistentesYBajaCalificacion;
 import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models.Cursos;
 import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models.Usuarios;
 import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Services.UsuarioServiceMongo;
@@ -80,12 +81,21 @@ public class UsuarioControllerMongo {
         }
     }
 
-    // **Nueva funcionalidad: Recomendación de cursos más populares**
+    // Recomendación de cursos más populares
     @GetMapping("/recomendadosPopulares")
     public ResponseEntity<List<Cursos>> recomendarCursosPopulares() {
         List<Cursos> cursosPopulares = usuarioService.recomendarCursosPopulares();
         return cursosPopulares != null && !cursosPopulares.isEmpty()
                 ? ResponseEntity.ok(cursosPopulares)
+                : ResponseEntity.noContent().build();
+    }
+
+    // **Nueva funcionalidad: Recomendación de cursos con pocos asistentes y baja calificación**
+    @GetMapping("/recomendadosPocosAsistentesYBajaCalificacion")
+    public ResponseEntity<List<CursoConPocosAsistentesYBajaCalificacion>> recomendarCursosConPocosAsistentesYBajaCalificacion() {
+        List<CursoConPocosAsistentesYBajaCalificacion> cursos = usuarioService.recomendarCursosConPocosAsistentesYBajaCalificacion();
+        return cursos != null && !cursos.isEmpty()
+                ? ResponseEntity.ok(cursos)
                 : ResponseEntity.noContent().build();
     }
 }

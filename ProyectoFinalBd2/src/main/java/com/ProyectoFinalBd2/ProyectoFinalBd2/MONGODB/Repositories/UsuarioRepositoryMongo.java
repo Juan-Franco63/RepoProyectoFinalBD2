@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models.CursoConPocosAsistentesYBajaCalificacion;
 import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models.CursoPopular;
 import com.ProyectoFinalBd2.ProyectoFinalBd2.MONGODB.Models.Usuarios;
 
@@ -25,4 +26,16 @@ public interface UsuarioRepositoryMongo extends MongoRepository<Usuarios, String
         "{ $sort: { count: -1 } }" // Ordena por número de inscritos en orden descendente
     })
     List<CursoPopular> findCursosConMasAsistentes();
+
+@Aggregation(pipeline = {
+    "{ $unwind: '$cursosMatriculados' }", // Descompone el array cursosMatriculados
+    "{ $unwind: '$ratingCursos' }", // Descompone el array ratingCursos
+    "{ $match: { $expr: { $eq: ['$cursosMatriculados', '$ratingCursos.cursoId'] } } }", // Une cursosMatriculados con ratingCursos
+    "{ $group: { _id: '$cursosMatriculados', countAsistentes: { $sum: 1 }, avgRating: { $avg: '$ratingCursos.rating' } } }", // Agrupa por curso
+    "{ $match: { countAsistentes: { $lt: 5 }, avgRating: { $lt: 3 } } }", // Filtra por pocos asistentes y baja calificación
+    "{ $project: { cursoId: '$_id', countAsistentes: 1, avgRating: 1 } }" // Proyecta los campos relevantes
+})
+List<CursoConPocosAsistentesYBajaCalificacion> findCursosConPocosAsistentesYBajaCalificacion();
+
+    
 }

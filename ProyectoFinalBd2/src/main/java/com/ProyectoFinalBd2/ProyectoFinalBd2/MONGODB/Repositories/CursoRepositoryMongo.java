@@ -16,4 +16,8 @@ public interface CursoRepositoryMongo extends MongoRepository<Cursos, String> {
     // Consulta custom: Buscar cursos de una categoría (excluyendo un curso específico) y ordenar por calificación
     @Query(value = "{ 'category': ?0, '_id': { $ne: ?1 } }", sort = "{ 'ratings.rating': -1 }")
     List<Cursos> findTopCursosSimilares(String category, String excludeCursoId);
+
+    @Query("{ '_id': { $in: ?0 }, 'ratings.rating': { $lt: 3.0 } }")
+    List<Cursos> findCursosConPocosAsistentesYBajaCalificacion(List<String> cursosIds);
+
 }
