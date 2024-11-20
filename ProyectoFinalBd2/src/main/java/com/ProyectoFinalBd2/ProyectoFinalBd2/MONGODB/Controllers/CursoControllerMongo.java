@@ -24,7 +24,7 @@ public class CursoControllerMongo {
     private CursoServiceMongo cursoService;
 
     // Obtener todos los cursos
-    @GetMapping("/  ")
+    @GetMapping("/all")
     public List<Cursos> getAllCursos() {
         return cursoService.getAllCursos();
     }
@@ -42,7 +42,7 @@ public class CursoControllerMongo {
     }
 
     // Buscar cursos por ID del tutor
-    @GetMapping("/finbByTutorId/{tutorId}")
+    @GetMapping("/findByTutorId/{tutorId}")
     public List<Cursos> getCursosByTutorId(@PathVariable String tutorId) {
         return cursoService.findCursosByTutorId(tutorId);
     }
@@ -62,9 +62,18 @@ public class CursoControllerMongo {
     }
 
     // Eliminar un curso por ID
-    @DeleteMapping("/DeleteById/{id}")
+    @DeleteMapping("/deleteById/{id}")
     public ResponseEntity<Void> deleteCursoById(@PathVariable String id) {
         cursoService.deleteCursoById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    // **Nueva Funcionalidad: Recomendación de cursos similares**
+    @GetMapping("/recomendadosSimilares/{nombreCurso}")
+    public ResponseEntity<List<Cursos>> recomendarCursosSimilares(@PathVariable String nombreCurso) {
+        List<Cursos> cursosSimilares = cursoService.recomendarCursosSimilares(nombreCurso);
+        return cursosSimilares != null && !cursosSimilares.isEmpty()
+                ? ResponseEntity.ok(cursosSimilares)
+                : ResponseEntity.noContent().build();
     }
 }

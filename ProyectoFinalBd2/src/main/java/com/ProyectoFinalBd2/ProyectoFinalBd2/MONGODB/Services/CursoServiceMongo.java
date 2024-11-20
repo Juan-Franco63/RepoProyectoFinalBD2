@@ -55,4 +55,20 @@ public class CursoServiceMongo {
             return cursoRepository.save(curso);
         }).orElse(null);
     }
+
+    // **Nueva Funcionalidad: Recomendación de cursos similares**
+    public List<Cursos> recomendarCursosSimilares(String nombreCurso) {
+        // Busca el curso por nombre
+        Cursos curso = cursoRepository.findAll().stream()
+                .filter(c -> c.getName().equalsIgnoreCase(nombreCurso))
+                .findFirst()
+                .orElse(null);
+
+        if (curso == null) {
+            throw new IllegalArgumentException("El curso especificado no existe.");
+        }
+
+        // Llama al método custom del repositorio para obtener cursos similares
+        return cursoRepository.findTopCursosSimilares(curso.getCategory(), curso.getId());
+    }
 }
